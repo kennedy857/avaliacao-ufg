@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="form-group" style="margin-bottom: 5px" >
+        <button class="btn btn-primary" mat-raised-button color="primary" routerLink="/cursos" flo>Listar Cursos</button>
+    </div>
+  <form  [formGroup]="formulario" (ngSubmit)="adicionarCurso()">
+      <mat-form-field class="example-full-width" style="margin-top: 4%" >
+        <input matInput placeholder="Nome Curso"  formControlName="nome">
+      </mat-form-field>
+
+      <div class="form-group">
+        <button mat-raised-button color="primary">Salvar</button>   
+      </div>
+    </form>
+</div>

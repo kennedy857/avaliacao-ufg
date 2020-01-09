@@ -1,0 +1,51 @@
+<div class="container" style="max-width: 400px; margin-top: 10%">
+
+  <form class="example-form" [formGroup]="loginForm" (ngSubmit)="login()">
+    <h1 style="text-align: center">Bem Vindo</h1>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="E-mail"  class="form-control" formControlName="usuario">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Senha"  class="form-control" formControlName="senha"  type="password">
+    </mat-form-field>
+
+    <div class="form-group" >
+      <button class="btn btn-primary" mat-raised-button color="primary" flo>Login</button>
+    </div>
+  </form>
+
+</div>
+
+
+<div class="container" style="max-width: 400px; margin-top: 5%">
+    <form class="example-form" [formGroup]="formulario" (ngSubmit)="adicionarUsuario()">
+        <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header style="background-color: #B0C4DE">
+          <mat-panel-title >
+          <a > Cadastre-se AQUI  </a> 
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+    
+        <mat-form-field  class="example-full-width">
+          <input matInput placeholder="E-mail"  formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="senha" type="password"  formControlName="senha">
+        </mat-form-field  >
+
+        <mat-checkbox  formControlName="admin">
+          Administrador ?
+        </mat-checkbox>
+
+        <div class="form-group" >
+            <button class="btn btn-primary" mat-raised-button color="primary" flo>Cadastrar</button>
+          </div>
+        
+      </mat-expansion-panel>
+    </mat-accordion>
+  </form>
+  
+</div>

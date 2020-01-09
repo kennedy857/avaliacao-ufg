@@ -1,0 +1,15 @@
+<nav class="navbar" style="margin-left: 2%; margin-right: 2%; margin-top: 1%;  ">
+
+  <a mat-button [matMenuTriggerFor]="menu" style="margin-left: 2%; color: white">Curso </a>
+  <a mat-button style="margin-left: 2%; color: white">|</a>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/cursos">Lista</button>
+    <button mat-menu-item routerLink="/cursos/novo">Cadastro</button>
+  </mat-menu>
+  <a mat-button routerLink="/" style="margin-left: 2%; color: white"> TELA INICIAL </a>
+  <a mat-button style="margin-left: 2%; color: white">|</a>  
+
+  <button [routerLink]="['/login']" style="color: red; float: right">Sair</button>
+  <!--  <li class="navbar-usuario">{{ auth.jwtPayload?.nome }}</li>-->
+</nav>
+
