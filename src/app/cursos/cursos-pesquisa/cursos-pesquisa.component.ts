@@ -6,8 +6,7 @@ import { CursoService } from './../curso.service';
 import { AuthService } from './../../seguranca/auth.service';
 
 import { CursoAlunoDTO } from '../../core/model';
-
-
+import { MensagensService } from './../../core/mensagens.service';
 
 @Component({
   selector: 'app-cursos-pesquisa',
@@ -25,6 +24,7 @@ export class CursosPesquisaComponent implements OnInit {
     public auth: AuthService,
     private cursoService: CursoService,
     private errorHandler: ErrorHandlerService,
+    private mensagensService: MensagensService,        
   ) { }
 
   ngOnInit() {
@@ -44,7 +44,8 @@ export class CursosPesquisaComponent implements OnInit {
     
         this.cursoService.excluir(id)
           .then(resultado => {
-            alert('curso excluído com sucesso!');
+            this.mensagensService.add('Curso excluído com sucesso!','Fechar','sucesso');  
+      
             this.pesquisar();
           })
           .catch(erro => this.errorHandler.handle(erro));
@@ -56,7 +57,8 @@ export class CursosPesquisaComponent implements OnInit {
       
           this.cursoService.inscreva(this.cursoAlunoDTO)
             .then(resultado => {
-              alert('Inscrição realizada com sucesso!');
+              this.mensagensService.add('Inscrição realizada com sucesso!','Fechar','sucesso');  
+              
             })
             .catch(erro => this.errorHandler.handle(erro));
         }  

@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-
-
 import { ErrorHandlerService } from './../../core/error-handler.service';
 
 import { CursoService } from './../curso.service';
+import { MensagensService } from './../../core/mensagens.service';
 
 @Component({
   selector: 'app-curso-cadastro',
@@ -22,7 +21,8 @@ export class CursoCadastroComponent implements OnInit {
     private errorHandler: ErrorHandlerService,
     private route: ActivatedRoute,
     private router: Router,
-    private formBuilder: FormBuilder    
+    private formBuilder: FormBuilder,
+    private mensagensService: MensagensService,        
   ) { }
 
   ngOnInit() {
@@ -34,7 +34,7 @@ export class CursoCadastroComponent implements OnInit {
     this.cursoService.adicionar(this.formulario.value)
       .then(cursoAdicionado => {
         this.formulario.reset();
-        alert('Curso adicionado com sucesso!');
+        this.mensagensService.add('Curso adicionado com sucesso!','Fechar','sucesso');    
         this.router.navigate(['/cursos']);
       })
       .catch(erro => this.errorHandler.handle(erro));

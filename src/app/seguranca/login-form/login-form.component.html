@@ -1,9 +1,10 @@
-<div class="container" style="max-width: 400px; margin-top: 10%">
+  
+<div class="container" style="width: 400px; margin-top: 10%">
 
   <form class="example-form" [formGroup]="loginForm" (ngSubmit)="login()">
     <h1 style="text-align: center">Bem Vindo</h1>
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="E-mail"  class="form-control" formControlName="usuario">
+      <input matInput placeholder="Usuário"  class="form-control" formControlName="usuario">
     </mat-form-field>
   
     <mat-form-field class="example-full-width">
@@ -29,7 +30,7 @@
         </mat-expansion-panel-header>
     
         <mat-form-field  class="example-full-width">
-          <input matInput placeholder="E-mail"  formControlName="email">
+          <input matInput placeholder="Usuário"  formControlName="email">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
@@ -39,13 +40,40 @@
         <mat-checkbox  formControlName="admin">
           Administrador ?
         </mat-checkbox>
-
-        <div class="form-group" >
+        <div class="form-group" style="margin-top: 10px">
             <button class="btn btn-primary" mat-raised-button color="primary" flo>Cadastrar</button>
           </div>
         
       </mat-expansion-panel>
     </mat-accordion>
   </form>
+  
+</div>
+
+<div class="container" style="max-width: 400px; margin-top: 5px">
+        <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header style="background-color: #4CAF50">
+          <mat-panel-title >
+          <a  style="color: white"> Lista de cursos</a> 
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <table mat-table [dataSource]="cursos" class="mat-elevation-z8" style="margin-top: 5px">
+            
+        
+              <ng-container matColumnDef="nome">
+                <th mat-header-cell *matHeaderCellDef> Nome Do curso </th>
+                <td mat-cell *matCellDef="let curso"> {{curso.nome}} </td>
+              </ng-container>
+        
+        
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            
+          </table>  
+          
+      </mat-expansion-panel>
+    </mat-accordion>
   
 </div>

@@ -12,7 +12,7 @@ import { AuthService } from './../../seguranca/auth.service';
 })
 export class DashboardComponent implements OnInit {
   matriculas = [];
-  displayedColumns: string[] = [ 'nome'];
+  displayedColumns: string[] = [ 'codigo','nome'];
   
   constructor(
     public auth: AuthService,

@@ -19,6 +19,9 @@ import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule }    from '@angular/forms';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTableModule} from '@angular/material/table';
+
 
 
 export function tokenGetter() {
@@ -44,7 +47,9 @@ export function tokenGetter() {
     ReactiveFormsModule,
     MatExpansionModule,
     MatCheckboxModule,
-     
+    MatSnackBarModule,
+    MatTableModule,
+    
     SegurancaRoutingModule
   ],
   declarations: [LoginFormComponent],

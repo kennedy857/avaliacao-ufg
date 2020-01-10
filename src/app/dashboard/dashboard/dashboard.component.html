@@ -1,18 +1,20 @@
 <div class="container">
   <div class="ui-g">
     <div class="ui-g-12">
-      <h1>Bem vindo ao sistema de Cursos.</h1>
+      <h1>{{ auth.jwtPayload?.email }}, Bem vindo ao sistema de Cursos.</h1>
 
-      <div *ngIf="auth.temPermissao('ROLE_USER')">
+      <div *ngIf="auth.temPermissao('ROLE_USER')" style="margin-top: 5%">
           <h3>Cursos no qual esta matriculado no momento :</h3>
-          <table mat-table [dataSource]="matriculas" class="mat-elevation-z8">
-              
+          <table mat-table [dataSource]="matriculas" class="mat-elevation-z8">           
     
+                <ng-container matColumnDef="codigo">
+                  <th mat-header-cell *matHeaderCellDef> Codigo </th>
+                  <td mat-cell *matCellDef="let matricula"> {{matricula.curso.codigo}} </td>
+                </ng-container>
                 <ng-container matColumnDef="nome">
-                  <th mat-header-cell *matHeaderCellDef> Nome do Curso </th>
+                  <th mat-header-cell *matHeaderCellDef> Nome </th>
                   <td mat-cell *matCellDef="let matricula"> {{matricula.curso.nome}} </td>
                 </ng-container>
-
               
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

@@ -5,6 +5,8 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 
 import { ConfirmationService } from 'primeng/api';
@@ -30,6 +32,8 @@ registerLocaleData(localePt);
     HttpClientModule,
     RouterModule,
     MatMenuModule,
+    MatButtonModule,
+    MatToolbarModule,
     GrowlModule,
     ConfirmDialogModule,
   ],

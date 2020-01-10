@@ -24,6 +24,14 @@ export class CursoService {
         });
     }
 
+    pesquisarCursosPublicos(): Promise<any> {
+      return this.http.get<any>(this.url+'/publicos')
+        .toPromise()
+        .then(response => {
+            return response;
+        });
+    }
+
     adicionar(curso: Curso): Promise<Curso> {
       return this.http.post<Curso>(this.url, curso)
         .toPromise();

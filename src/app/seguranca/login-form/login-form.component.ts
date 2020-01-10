@@ -6,6 +6,9 @@ import { AuthService } from './../auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TestBed } from '@angular/core/testing';
 import { CadatreseService } from './../cadatrese.service';
+import { MensagensService } from './../../core/mensagens.service';
+
+import { CursoService } from './../../cursos/curso.service';
 
 @Component({
   selector: 'app-login-form',
@@ -17,15 +20,22 @@ export class LoginFormComponent implements OnInit {
   loginForm: FormGroup;
   formulario: FormGroup;
 
+  cursos = [];
+  displayedColumns: string[] = ['nome'];
+  
   constructor(
     private auth: AuthService,
     private errorHandler: ErrorHandlerService,
     private router: Router,
     private formBuilder: FormBuilder,
     private cadatreseService: CadatreseService,
+    private mensagensService: MensagensService, 
+    private cursoService : CursoService,   
   ) { }
 
   ngOnInit() {
+    this.pesquisarCursosPublicos();
+    
     this.loginForm = this.formBuilder.group({
         usuario: ['', Validators.required],
         senha: ['', Validators.required]
@@ -36,7 +46,8 @@ export class LoginFormComponent implements OnInit {
       email: ['', Validators.required],
       senha: ['', Validators.required],
       admin: ['', Validators.required]
-  });
+    });
+
 
 }
   get f() { return this.loginForm.controls; }
@@ -47,9 +58,7 @@ export class LoginFormComponent implements OnInit {
       return;
   }
 
-  
-
-    this.auth.login(this.f.usuario.value, this.f.senha.value)
+  this.auth.login(this.f.usuario.value, this.f.senha.value)
       .then(() => {
         this.router.navigate(['/dashboard']);
       })
@@ -63,9 +72,17 @@ export class LoginFormComponent implements OnInit {
     this.cadatreseService.adicionar(this.formulario.value)
       .then(usuarioAdicionado => {
         this.formulario.reset();
-        alert('Seu cadastro foi realizado com sucesso!');
+        this.mensagensService.add('Seu cadastro foi realizado com sucesso!','Fechar','sucesso');  
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
 
+  pesquisarCursosPublicos() {
+        this.cursoService.pesquisarCursosPublicos()
+          .then(resultado => {
+            this.cursos = resultado;
+            console.log( this.cursos);
+          })
+          .catch(erro => this.errorHandler.handle(erro));
+      }
 }
