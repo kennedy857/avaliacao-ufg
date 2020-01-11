@@ -17,7 +17,7 @@ export class CadatreseService {
 
     
     adicionar(usuario: Usuario): Promise<Usuario> {
-      return this.http.post<Usuario>(this.url, usuario)
+      return this.http.postSemToken<Usuario>(this.url, usuario)
         .toPromise();
     }
 }

@@ -72,7 +72,7 @@ export class UfgHttp extends HttpClient {
 
   private fazerRequisicaoSemToken<T>(fn: Function): Observable<T> {
     
-       return fn();
+    return fn();
  }
 
 }
