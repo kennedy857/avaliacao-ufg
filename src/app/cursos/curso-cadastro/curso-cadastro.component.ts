@@ -26,8 +26,17 @@ export class CursoCadastroComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    const codigoCurso = this.route.snapshot.params['codigo'];
+    
     this.formulario = this.formBuilder.group({
-      nome: ['', Validators.required]  });
+      codigo: [''],
+      nome: ['', Validators.required]  
+    });
+    
+    if(codigoCurso){
+        this.carregarCurso(codigoCurso);
+    }
+
   }
 
   adicionarCurso() {
@@ -36,6 +45,15 @@ export class CursoCadastroComponent implements OnInit {
         this.formulario.reset();
         this.mensagensService.add('Curso adicionado com sucesso!','Fechar','sucesso');    
         this.router.navigate(['/cursos']);
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  carregarCurso(codigo: number) {
+    this.cursoService.consultarPorId(codigo)
+      .then(curso => {
+        console.log(curso);
+        this.formulario.patchValue(curso);
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

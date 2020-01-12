@@ -21,6 +21,12 @@ const routes: Routes = [
     component: CursoCadastroComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_ADMIN'] }
+  },
+  {
+    path: ':codigo',
+    component: CursoCadastroComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_ADMIN'] }
   }
  
 ];

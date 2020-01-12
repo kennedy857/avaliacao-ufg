@@ -18,8 +18,10 @@
       <ng-container matColumnDef="opcao">
           <th mat-header-cell *matHeaderCellDef> Opções </th>
           <td mat-cell *matCellDef="let curso">
+  
+              <button id="editar" class="btn btn-primary" mat-raised-button color="primary" [routerLink]="['/cursos', curso.codigo]" *ngIf="auth.temPermissao('ROLE_ADMIN')" style="margin-right: 2px">Editar</button>              
               <button id="remove" class="btn btn-warn" mat-raised-button color="warn" (click)="excluir(curso.codigo)" *ngIf="auth.temPermissao('ROLE_ADMIN')">Excluir</button>
-              <button id="remove" class="btn btn-primary" mat-raised-button color="primary" (click)="inscreva(curso.codigo, auth.jwtPayload?.id)" *ngIf="auth.temPermissao('ROLE_USER')">Inscrever-se</button>
+              <button id="inscrever" class="btn btn-primary" mat-raised-button color="primary" (click)="inscreva(curso.codigo, auth.jwtPayload?.id)" *ngIf="auth.temPermissao('ROLE_USER')">Inscrever-se</button>
           </td>
         </ng-container>
 

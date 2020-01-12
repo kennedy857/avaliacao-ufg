@@ -23,6 +23,11 @@ export class CursoService {
             return response;
         });
     }
+        
+    consultarPorId(id: number): Promise<Curso> {
+      return this.http.get<Curso>(this.url+'/'+id)
+        .toPromise();
+    }
 
     pesquisarCursosPublicos(): Promise<any> {
       return this.http.get<any>(this.url+'/publicos')
