@@ -30,8 +30,12 @@
         </mat-expansion-panel-header>
     
         <mat-form-field  class="example-full-width">
-          <input matInput placeholder="Usuário"  formControlName="email">
+          <input matInput placeholder="CPF (login)" (blur)="validarCPF(formulario.value.cpf)"  formControlName="cpf">
         </mat-form-field>
+
+        <mat-form-field  class="example-full-width">
+            <input matInput placeholder="Nome"  formControlName="nome">
+          </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <input matInput placeholder="senha" type="password"  formControlName="senha">
