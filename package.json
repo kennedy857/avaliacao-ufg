@@ -32,7 +32,7 @@
     "ng-gentelella": "^0.2.6",
     "ng2-currency-mask": "^4.1.0",
     "ng2-toasty": "^4.0.3",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "primeicons": "^1.0.0",
     "primeng": "^7.1.3",
     "rxjs": "^6.5.4",
